@@ -22,7 +22,7 @@ public class Affichage extends JPanel{
 
         this.etat = etat;
         //Creation de la fenetre
-        frame = new JFrame("Test");
+        frame = new JFrame("Test dessin");
         frame.setLocation(500, 250);
 
         //Ajout de la fenetre d'affichage
