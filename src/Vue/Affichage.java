@@ -49,10 +49,10 @@ public class Affichage extends JPanel{
         super.paint(g);
 
         int widthOvale = 50;
-        int x = 150;
+        int x = 50;
 
         int heightOvale = 100;
-        int y = 100;
+        int y = 300;
 
         //Selectionne la couleur et dessin
         g.setColor(Color.BLACK);
