@@ -27,18 +27,14 @@ public class Affichage extends JPanel{
 
         //Ajout de la fenetre d'affichage
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
-        frame.add(this);
-        //Ajout du controleur
-        // On ajoute un mouseListener pour pouvoir faire bouger l'oval
-        frame.addMouseListener(new Controler(this.etat, this));
 
-        frame.pack();
-        frame.setVisible(true);
-        frame.setResizable(false);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 
     }
-
+    public void change(){
+        revalidate();
+        repaint();
+    }
 
     /**
      * Used to paint the oval on the screen
@@ -47,6 +43,7 @@ public class Affichage extends JPanel{
     @Override
     public void paint(Graphics g){
         super.paint(g);
+        int hauteur = etat.gethauteur();
 
         int widthOvale = 50;
         int x = 50;
@@ -56,7 +53,7 @@ public class Affichage extends JPanel{
 
         //Selectionne la couleur et dessin
         g.setColor(Color.BLACK);
-        g.drawOval(x, y, widthOvale, heightOvale);
+        g.drawOval(x, HEIGHT - hauteur -heightOvale, widthOvale, heightOvale);
 
     }
 

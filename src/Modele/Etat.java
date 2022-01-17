@@ -3,16 +3,20 @@ public class Etat {
 
     /*** Constantes ***/
     private final int jump = 15;
+    public int HEIGHT_OVALE = 60;
 
-    /*** Variable de la hauteur de l'ovale ***/
-    private int hauteur = 0;
+    public Etat () {
+    }
 
     /**
-     * Change la longueur de l'ovale
+     * saut de l'ovale
      */
     public void jump() {
-        hauteur += jump;
-
+        HEIGHT_OVALE += jump;
+    }
+    /** on guette la hauteur **/
+    public int gethauteur() {
+        return HEIGHT_OVALE;
     }
 }
 
