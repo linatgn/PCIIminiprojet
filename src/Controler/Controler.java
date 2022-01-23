@@ -29,7 +29,8 @@ public class Controler implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         etat.jump();
-        affichage.change();
+        this.affichage.repaint(); //Permet de redessiner l'oval apres un saut
+
     }
     @Override
     public void mousePressed(MouseEvent e) {
