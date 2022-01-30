@@ -3,7 +3,7 @@ package Modele;
 public class Voler extends Thread{
 
     private Etat etat;
-    private final int delai = 100;
+    private final int DELAY = 100;
 
     public Voler(Etat e){
         this.etat = e;
@@ -12,7 +12,7 @@ public class Voler extends Thread{
     public void resetCounter(){ this.interrupt();}
 
     /**
-     * Permet de faire descendre l'ovale
+     * Permet de faire descendre l'ovale toutes les DELAY
      */
     @Override
     public void run(){
@@ -21,12 +21,10 @@ public class Voler extends Thread{
             if(b) etat.moveDown();
             try{
                 b = true;
-                Thread.sleep(delai);
+                Thread.sleep(DELAY);
             } catch (InterruptedException e) {
                 b = false;
             }
         }
     }
-
-
 }
