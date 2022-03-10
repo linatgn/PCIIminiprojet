@@ -21,14 +21,13 @@ public class Affichage extends JPanel{
         //Part1.Affichage depend d'un etat
         this.etat = etat;
         //Creation de la fenetre
-        frame = new JFrame("Flappy");
+        frame = new JFrame("Tuto1");
         frame.setLocation(500, 250);
         //Ajout de la fenetre d'affichage
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
         frame.add(this);
-
-        // On ajoute un mouseListener pour faire bouger l'ovale
-        frame.addMouseListener(new Controler(this.etat, this));
+        //Ajout du controleur
+        frame.addMouseListener(new Controler(this.etat, this)); // On ajoute un mouseListener pour pouvoir faire bouger l'oval
 
         frame.pack();
         frame.setVisible(true);
@@ -39,6 +38,10 @@ public class Affichage extends JPanel{
         (new ThreadAffichage(this, this.etat)).start();
     }
 
+    public void endScreen() {
+        JOptionPane.showMessageDialog(frame, "Votre score : " + etat.getScore(), "Game Over", JOptionPane.PLAIN_MESSAGE);
+        System.exit(0);
+    }
 
 
     /**
@@ -62,11 +65,11 @@ public class Affichage extends JPanel{
         //La hauteur de l'ovalee
         int heightOvale = Etat.height_ovale;
         //Sa posisiton en Y
-        int y_ovale = height - etat.getHauteur();
+        int Y_OVALE = height - etat.getHauteur();
 
         //Selectionne la couleur et dessin
         g.setColor(Color.BLACK);
-        g.drawOval(xOvale, y_ovale, widthOvale, heightOvale);
+        g.drawOval(xOvale, Y_OVALE, widthOvale, heightOvale);
 
 
         //Dessin de la ligne brisee
@@ -79,9 +82,5 @@ public class Affichage extends JPanel{
             g.drawLine(previousPoint.x, previousPoint.y, currentPoint.x, currentPoint.y);
         }
     }
-    public void endScreen() {
-        JOptionPane.showMessageDialog(frame, "Score Total : " + etat.getScore(), "Perdu!", JOptionPane.PLAIN_MESSAGE);
-        System.exit(0);
-    }
-
 }
+
