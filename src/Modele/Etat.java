@@ -1,27 +1,29 @@
 package Modele;
 
+
 import Vue.Affichage;
+
 import java.awt.*;
 import java.util.ArrayList;
 
 public class Etat {
 
-    /*** Constantes ***/
+    //Constantes
     private final int jump = 15;
-    private final int speed = 3;
+    private final int speed = 4;
     public static final int max_height = 550;
     public static final int min_height = 100;
     public static final int min_width = -120;
     public static final int max_width = 1200;
     public static final int height_ovale = 60;
 
-    /*** Varaible de la hauteur de l'ovale ***/
+    // Variable de la hauteur de l'ovale
     private int hauteur = 0;
 
-    /*** La thread pour pouvoir faire retomber l'ovale ***/
+    // La thread pour pouvoir faire retomber l'ovale
     private Voler fallDown;
 
-    /*** Le parcours ***/
+    // Le parcours
     private Parcours parcours;
 
     public Etat(){
@@ -35,9 +37,8 @@ public class Etat {
         (new Avancer(this.parcours, this)).start();
     }
 
-    /**
-     * Change the height of the oval with JUMP_HEIGHT
-     */
+    // Change la hauteur de l'ovale
+
     public void jump(){
         hauteur += jump;
         if(hauteur + height_ovale > max_height) hauteur = max_height - height_ovale;
@@ -45,9 +46,9 @@ public class Etat {
         fallDown.resetCounter();
     }
 
-    /**
-     * Permet de faire tomber l'ovale
-     */
+
+    //Permet de faire tomber l'ovale
+
     public void moveDown(){
         hauteur -= speed;
         if(hauteur < min_height)
@@ -74,7 +75,7 @@ public class Etat {
             if(point.get(i).x > xOvale) {
                 pp = point.get(i-1);
                 np = point.get(i);
-                //On s'arrete des qu'on a trouve les deux points
+                //On s'arrete des qu'on a trouvé les deux points
                 break;
             }
         }
